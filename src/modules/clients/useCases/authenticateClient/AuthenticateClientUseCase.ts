@@ -26,7 +26,10 @@ class AuthenticateClientUseCase {
   
     if (!passwordMatch) throw new AppError('Username or password incorrect.');
       
-    const token = sign({ username }, "3efba3aacd6e0ccef0c7f46724a926bb", { expiresIn: "7d" });
+    const token = sign({ username }, "3efba3aacd6e0ccef0c7f46724a926bb", { 
+      subject: user.id,
+      expiresIn: "7d" 
+    });
     const { id } = user;
   
     const userResult = {
