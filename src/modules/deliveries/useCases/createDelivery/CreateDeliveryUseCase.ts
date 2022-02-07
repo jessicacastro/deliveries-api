@@ -1,6 +1,5 @@
 import { prisma } from '../../../../database/prismaClient';
 
-
 interface ICreateDelivery {
   item_name: string;
   id_client: string;
