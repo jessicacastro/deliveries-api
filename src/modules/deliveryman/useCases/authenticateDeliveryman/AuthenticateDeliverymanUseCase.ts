@@ -3,14 +3,14 @@ import { sign } from "jsonwebtoken";
 import { prisma } from "../../../../database/prismaClient";
 import { AppError } from "../../../../shared/error/AppError";
 
-interface IAuthenticateClient {
+interface IAuthenticateDeliveryman {
   username: string;
   password: string;
 }
 
-class AuthenticateClientUseCase {
-  async execute({ username, password }: IAuthenticateClient) {
-    const user = await prisma.clients.findFirst(
+class AuthenticateDeliverymanUseCase {
+  async execute({ username, password }: IAuthenticateDeliveryman) {
+    const user = await prisma.deliveryman.findFirst(
       { 
         where: { 
           username: {
@@ -26,7 +26,7 @@ class AuthenticateClientUseCase {
   
     if (!passwordMatch) throw new AppError('Username or password incorrect.');
       
-    const token = sign({ username }, "3efba3aacd6e0ccef0c7f46724a926bb", { expiresIn: "7d" });
+    const token = sign({ username }, "3efba3aacd6e0ccef0c7f46724a926cc", { expiresIn: "7d" });
     const { id } = user;
   
     const userResult = {
@@ -41,4 +41,4 @@ class AuthenticateClientUseCase {
   }
 }
 
-export { AuthenticateClientUseCase }
+export { AuthenticateDeliverymanUseCase }

@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import { routes } from './routes';
 
 import { AppError } from './shared/error/AppError';
@@ -23,6 +24,8 @@ server.use((err: Error, request: Request, response: Response, next: NextFunction
     message: `Internal Server Error - ${err.message}`
   });
 });
+
+
 
 
 server.listen(3000, () => console.log('Server running at http://localhost:3000'));

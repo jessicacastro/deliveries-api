@@ -3,14 +3,14 @@ import { prisma } from "../../../../database/prismaClient";
 import { AppError } from "../../../../shared/error/AppError";
 
 
-interface ICreateClient {
+interface ICreateDeliveryman {
   username: string;
   password: string;
 }
 
-class CreateClientUseCase {
-  async execute({ username, password }: ICreateClient) {
-    const clientExists = await prisma.clients.findFirst(
+class CreateDeliverymanUseCase {
+  async execute({ username, password }: ICreateDeliveryman) {
+    const deliverymanExists = await prisma.deliveryman.findFirst(
       { 
         where: { 
           username: {
@@ -20,13 +20,13 @@ class CreateClientUseCase {
       }
     );
 
-    if (clientExists) {
-      throw new AppError('Client already exists.');
+    if (deliverymanExists) {
+      throw new AppError('Deliveryman already exists.', );
     }
 
     const hashPassword = await hash(password, 10);
 
-    const client = await prisma.clients.create({
+    const deliveryman = await prisma.deliveryman.create({
       data: {
         username,
         password: hashPassword
@@ -34,8 +34,8 @@ class CreateClientUseCase {
     });
 
 
-    return client;
+    return deliveryman;
   }
 }
 
-export { CreateClientUseCase };
+export { CreateDeliverymanUseCase };
