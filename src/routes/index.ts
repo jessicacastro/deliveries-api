@@ -9,6 +9,6 @@ const routes = Router();
 
 routes.use('/clients', clientsRoutes);
 routes.use('/deliveryman', deliverymanRoutes)
-routes.use('/delivery', deliveryRoutes);
+routes.use('/deliveries', deliveryRoutes);
 
 export { routes };

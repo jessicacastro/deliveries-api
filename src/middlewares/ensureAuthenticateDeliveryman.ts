@@ -16,14 +16,15 @@ const ensureAuthenticateDeliveryman = (request: Request, response: Response, nex
 
   const [_, token] = authToken.split(" ");
 
-  try {
-    const { sub: user_id } = verify(token, "3efba3aacd6e0ccef0c7f46724a926cc") as IPayload;
 
-    request.user_id = user_id;
+  try {
+    const { sub } = verify(token, "3efba3aacd6e0ccef0c7f46724a926cc") as IPayload;
+
+    request.id_deliveryman = sub ;
 
     return next();
   } catch (error) {
-    return response.status(401).send();
+    return response.status(401).json({ message: 'Invalid token!'});
   }
 }
 

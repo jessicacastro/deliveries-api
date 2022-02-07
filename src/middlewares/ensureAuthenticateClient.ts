@@ -7,7 +7,7 @@ interface IPayload {
   sub: string;
 }
 
-function ensureAuthenticateClient(request: Request, response: Response, next: NextFunction) {
+const ensureAuthenticateClient = (request: Request, response: Response, next: NextFunction) => {
   const authToken = request.headers.authorization;
 
   if (!authToken) {
