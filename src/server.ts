@@ -5,6 +5,7 @@ import { routes } from './routes';
 import { AppError } from './shared/error/AppError';
 
 const server = express();
+const port = process.env.port || 3000;
 
 server.use(express.json());
 
@@ -28,4 +29,4 @@ server.use((err: Error, request: Request, response: Response, next: NextFunction
 
 
 
-server.listen(3000, () => console.log('Server running at http://localhost:3000'));
+server.listen(port, () => console.log(`Listening on port: ${port}`));
