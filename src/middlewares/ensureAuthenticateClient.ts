@@ -22,7 +22,7 @@ const ensureAuthenticateClient = (request: Request, response: Response, next: Ne
     request.id_client = sub;
     return next();
   } catch (error) {
-    return response.status(401).send();
+    return response.status(401).json({ message: 'Invalid token!'});
   }
 }
 

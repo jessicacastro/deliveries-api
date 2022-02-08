@@ -14,6 +14,7 @@ class CreateClientUseCase {
       { 
         where: { 
           username: {
+            equals: username,
             mode: "insensitive"
           }
         }

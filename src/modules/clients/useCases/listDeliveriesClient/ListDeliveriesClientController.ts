@@ -7,7 +7,7 @@ class ListDeliveriesClientController {
 
     const { id_client } = request;
 
-    const deliveries = await listDeliveriesClientUseCase.execute({ id_client });
+    const deliveries = await listDeliveriesClientUseCase.execute(id_client);
 
     return response.json(deliveries);
   }

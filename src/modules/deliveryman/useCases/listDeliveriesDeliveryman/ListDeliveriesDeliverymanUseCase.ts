@@ -1,10 +1,10 @@
 import { prisma } from "../../../../database/prismaClient"
 
-class ListDeliveriesClientUseCase {
-  async execute(id_client: string) {
-    const deliveries = await prisma.clients.findMany({
+class ListDeliveriesDeliverymanUseCase {
+  async execute(id_deliveryman: string) {
+    const deliveries = await prisma.deliveryman.findMany({
       where: {
-        id: id_client
+        id: id_deliveryman
       },
       select: {
         deliveries: true,
@@ -18,4 +18,4 @@ class ListDeliveriesClientUseCase {
   }
 }
 
-export { ListDeliveriesClientUseCase }
+export { ListDeliveriesDeliverymanUseCase }
